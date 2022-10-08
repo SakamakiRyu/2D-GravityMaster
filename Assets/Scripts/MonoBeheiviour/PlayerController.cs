@@ -37,6 +37,7 @@ public class PlayerController : MonoBehaviour
     private void Walk()
     {
         var v2 = _pInput.actions["Move"].ReadValue<Vector2>();
+        v2.y = 0;
 
         if (v2 != Vector2.zero)
         {
