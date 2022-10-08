@@ -1,3 +1,4 @@
+using System.Threading;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -9,9 +10,12 @@ public class PlayerController : MonoBehaviour
 {
     #region Field
     [SerializeField]
-    private PlayerInput _pInput;
+    private PlayerInput _pInput = default;
 
-    private Rigidbody2D _rb2d;
+    [SerializeField]
+    private float _walkSpeed = default;
+
+    private Rigidbody2D _rb2d = default ;
     #endregion
 
     #region Unity Function
@@ -32,8 +36,13 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void Walk()
     {
-        var inputV2 = _pInput.actions["Move"];
-        var v2 = inputV2.ReadValue<Vector2>();
+        var v2 = _pInput.actions["Move"].ReadValue<Vector2>();
+
+        if (v2 != Vector2.zero)
+        {
+            var velo = v2 * _walkSpeed;
+            _rb2d.velocity = velo;
+        }
     }
     #endregion
 
