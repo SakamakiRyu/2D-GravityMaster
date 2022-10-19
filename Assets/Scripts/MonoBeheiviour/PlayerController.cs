@@ -56,6 +56,10 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
+            if (v2 != Vector2.zero)
+            {
+
+            }
         }
     }
 
