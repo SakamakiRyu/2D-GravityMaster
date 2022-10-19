@@ -255,6 +255,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _pInput: {fileID: 1453747487}
   _walkSpeed: 5
+  _jumpPower: 4
 --- !u!70 &262110695
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

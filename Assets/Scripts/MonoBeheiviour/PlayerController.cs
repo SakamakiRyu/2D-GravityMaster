@@ -14,6 +14,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float _walkSpeed = default;
 
+    [SerializeField]
+    private float _jumpPower = default;
+
     private Rigidbody2D _rb2d = default;
     #endregion
 
@@ -26,6 +29,7 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         Walk();
+        Jump();
     }
     #endregion
 
@@ -60,7 +64,13 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void Jump()
     {
-
+        if (IsGrounded())
+        {
+            if (_pInput.actions["Jump"].IsPressed())
+            {
+                _rb2d.AddForce(Vector2.up * _jumpPower, ForceMode2D.Impulse);
+            }
+        }
     }
 
     /// <summary>
